@@ -1,0 +1,28 @@
+parameters: 
+ - name: serviceconnection
+   type: string 
+
+ - name: webappname
+   type: string 
+
+
+
+
+steps: 
+
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/fine-best-free-app-landing-page'
+      includeRootFolder: false
+      archiveType: 'zip'
+      archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
+      replaceExistingArchive: true
+
+  - task: AzureWebApp@1
+    inputs:
+      azureSubscription: '$({ parameters.serviceconnection })'
+      appType: 'webApp'
+      appName: '$({ parameters.webappname })'
+      package: '$(System.DefaultWorkingDirectory)/*.zip'
+      deploymentMethod: 'auto'
+     
