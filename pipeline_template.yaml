@@ -20,9 +20,9 @@ steps:
 
   - task: AzureWebApp@1
     inputs:
-      azureSubscription: '$({ parameters.serviceconnection })'
+      azureSubscription: ${{ parameters.serviceconnection }}
       appType: 'webApp'
-      appName: '$({ parameters.webappname })'
+      appName: ${{ parameters.webappname }}
       package: '$(System.DefaultWorkingDirectory)/*.zip'
       deploymentMethod: 'auto'
      
