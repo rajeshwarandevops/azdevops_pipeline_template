@@ -12,7 +12,7 @@ steps:
 
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/fine-best-free-app-landing-page'
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
       includeRootFolder: false
       archiveType: 'zip'
       archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
